@@ -8,7 +8,12 @@
         <img src="../assets/user-avatar.png" class="user-avatar">
       </div>
       <div class="col-sm-7">
-        <button class="btn btn-primary">Click</button>
+        <table class="table">
+          <tr v-for="(value, key) in basicInfo">
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+          </tr>
+        </table>
       </div>
     </div>
 
@@ -17,7 +22,8 @@
 
 <script>
 export default {
-  name: "BasicInfo"
+  name: "BasicInfo",
+  props: ["basicInfo"]
 }
 </script>
 

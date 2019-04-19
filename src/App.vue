@@ -1,17 +1,34 @@
 <template>
   <div id="app">
-    <basic-info></basic-info>
+    <basic-info :basicInfo="basic"></basic-info>
   </div>
 </template>
 
 <script>
 
 import BasicInfo from "./components/BasicInfo.vue"
+import axios from "axios";
 
 export default {
   name: "app",
   components: {
     BasicInfo
+  },
+  props: ["basicInfo"],
+  data() {
+    return {
+      info: null,
+      basic: null
+    }
+  },
+  mounted() {
+    axios.get("get_data").then(response => {
+      this.info = response.data.info;
+      this.basic = this.info["basic-info"];
+    })
+    .catch(e => {
+      console.log(e)
+    })
   }
 }
 </script>
