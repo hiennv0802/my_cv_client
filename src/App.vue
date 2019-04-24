@@ -2,6 +2,7 @@
   <div id="app" class="container">
     <basic-info :basicInfo="basic"></basic-info>
     <education-work :educationWork="work"></education-work>
+    <skill :skillInfo="skills"></skill>
   </div>
 </template>
 
@@ -9,20 +10,23 @@
 
 import BasicInfo from "./components/BasicInfo.vue"
 import EducationWork from "./components/EducationWork.vue"
+import Skill from "./components/Skill.vue"
 import axios from "axios";
 
 export default {
   name: "app",
   components: {
     BasicInfo,
-    EducationWork
+    EducationWork,
+    Skill
   },
-  props: ["basicInfo", "educationWork"],
+  props: ["basicInfo", "educationWork", "skillInfo"],
   data() {
     return {
       info: null,
       basic: null,
-      work: null
+      work: null,
+      skills: null
     }
   },
   mounted() {
@@ -30,9 +34,7 @@ export default {
       this.info = response.data.info;
       this.basic = this.info["basic-info"];
       this.work = this.info["work_schedule"];
-    })
-    .catch(e => {
-      console.log(e)
+      this.skills = this.info["skills"];
     })
   }
 }

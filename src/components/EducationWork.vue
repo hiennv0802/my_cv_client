@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <table class="table table-vertical-align-middle">
-      <tr v-for="(value, key) in educationWork">
+      <tr v-for="(value) in educationWork">
         <th>
           <div class="edu-year">
             {{value.start_date}}
@@ -11,7 +11,7 @@
         </th>
         <td>{{value.desc}}</td>
         <td>
-          <img :src="imageUrl(value.logo)" class="certification_logo"/>
+          <img :src="imageUrl()" class="certification_logo"/>
         </td>
       </tr>
     </table>
@@ -23,8 +23,7 @@ export default {
   name: "EducationWork",
   props: ["educationWork"],
   methods: {
-    imageUrl: function(url) {
-      var a = "../assets/framgia.jpg";
+    imageUrl: function() {
       return require("../assets/framgia.jpg");
     }
   }
