@@ -3,6 +3,7 @@
     <basic-info :basicInfo="basic"></basic-info>
     <education-work :educationWork="work"></education-work>
     <skill :skillInfo="skills"></skill>
+    <canvas id="planet-chart"></canvas>
   </div>
 </template>
 
@@ -12,6 +13,8 @@ import BasicInfo from "./components/BasicInfo.vue"
 import EducationWork from "./components/EducationWork.vue"
 import Skill from "./components/Skill.vue"
 import axios from "axios";
+import Chart from "chart.js";
+import planetChartData from "./chart-data.js";
 
 export default {
   name: "app",
@@ -26,7 +29,8 @@ export default {
       info: null,
       basic: null,
       work: null,
-      skills: null
+      skills: null,
+      planetChartData: planetChartData
     }
   },
   mounted() {
@@ -35,7 +39,18 @@ export default {
       this.basic = this.info["basic-info"];
       this.work = this.info["work_schedule"];
       this.skills = this.info["skills"];
-    })
+    }),
+    this.createChart('planet-chart', this.planetChartData);
+  },
+  methods: {
+    createChart(chartId, chartData) {
+      const ctx = document.getElementById(chartId);
+      const myChart = new Chart(ctx, {
+        type: chartData.type,
+        data: chartData.data,
+        options: chartData.options,
+      });
+    }
   }
 }
 </script>
