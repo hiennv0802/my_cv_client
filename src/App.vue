@@ -3,18 +3,15 @@
     <basic-info :basicInfo="basic"></basic-info>
     <education-work :educationWork="work"></education-work>
     <skill :skillInfo="skills"></skill>
-    <canvas id="planet-chart"></canvas>
+    <chartjs-radar :labels="labels" :data="dataset" :bind="true"></chartjs-radar>
   </div>
 </template>
 
 <script>
-
 import BasicInfo from "./components/BasicInfo.vue"
 import EducationWork from "./components/EducationWork.vue"
 import Skill from "./components/Skill.vue"
 import axios from "axios";
-import Chart from "chart.js";
-import planetChartData from "./chart-data.js";
 
 export default {
   name: "app",
@@ -30,7 +27,8 @@ export default {
       basic: null,
       work: null,
       skills: null,
-      planetChartData: planetChartData
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      dataset: [65, 59, 80, 81, 56, 55, 40]
     }
   },
   mounted() {
@@ -39,18 +37,7 @@ export default {
       this.basic = this.info["basic-info"];
       this.work = this.info["work_schedule"];
       this.skills = this.info["skills"];
-    }),
-    this.createChart('planet-chart', this.planetChartData);
-  },
-  methods: {
-    createChart(chartId, chartData) {
-      const ctx = document.getElementById(chartId);
-      const myChart = new Chart(ctx, {
-        type: chartData.type,
-        data: chartData.data,
-        options: chartData.options,
-      });
-    }
+    })
   }
 }
 </script>
