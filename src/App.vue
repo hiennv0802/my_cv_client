@@ -3,7 +3,7 @@
     <basic-info :basicInfo="basic"></basic-info>
     <education-work :educationWork="work"></education-work>
     <skill :skillInfo="skills"></skill>
-    <chartjs-radar :labels="labels" :data="dataset" :bind="true"></chartjs-radar>
+    <knowledge :knowledgeInfo="knowledge"></knowledge>
   </div>
 </template>
 
@@ -11,6 +11,7 @@
 import BasicInfo from "./components/BasicInfo.vue"
 import EducationWork from "./components/EducationWork.vue"
 import Skill from "./components/Skill.vue"
+import Knowledge from "./components/Knowledge.vue"
 import axios from "axios";
 
 export default {
@@ -20,15 +21,14 @@ export default {
     EducationWork,
     Skill
   },
-  props: ["basicInfo", "educationWork", "skillInfo"],
+  props: ["basicInfo", "educationWork", "skillInfo", "knowledgeInfo"],
   data() {
     return {
       info: null,
       basic: null,
       work: null,
-      skills: null,
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
-      dataset: [65, 59, 80, 81, 56, 55, 40]
+      skills: {},
+      knowledge: {},
     }
   },
   mounted() {
@@ -37,6 +37,7 @@ export default {
       this.basic = this.info["basic-info"];
       this.work = this.info["work_schedule"];
       this.skills = this.info["skills"];
+      this.knowledge = this.info["knowledge"];
     })
   }
 }
