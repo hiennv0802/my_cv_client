@@ -4,6 +4,7 @@
     <education-work :educationWork="work"></education-work>
     <skill :skillInfo="skills"></skill>
     <knowledge :knowledgeInfo="knowledge"></knowledge>
+    <otherSkill :otherSkillInfo="otherSkill"></otherSkill>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import BasicInfo from "./components/BasicInfo.vue"
 import EducationWork from "./components/EducationWork.vue"
 import Skill from "./components/Skill.vue"
 import Knowledge from "./components/Knowledge.vue"
+import OtherSkill from "./components/OtherSkill.vue"
 import axios from "axios";
 
 export default {
@@ -19,9 +21,11 @@ export default {
   components: {
     BasicInfo,
     EducationWork,
-    Skill
+    Skill,
+    Knowledge,
+    OtherSkill
   },
-  props: ["basicInfo", "educationWork", "skillInfo", "knowledgeInfo"],
+  props: ["basicInfo", "educationWork", "skillInfo", "knowledgeInfo", "otherSkillInfo"],
   data() {
     return {
       info: null,
@@ -38,6 +42,7 @@ export default {
       this.work = this.info["work_schedule"];
       this.skills = this.info["skills"];
       this.knowledge = this.info["knowledge"];
+      this.otherSkill = this.info["other_skills"];
     })
   }
 }
