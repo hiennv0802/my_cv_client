@@ -1,8 +1,9 @@
 <template>
   <div class="row">
-    <h1>NGUYEN VAN HIEN</h1><br/>
-    <p>Nếu đã làm việc gì, hãy phấn đấu là người số 1 lĩnh vực đó, không bao giờ thoả hiệp với vị trí thứ 2.</p>
-    <p>Hãy phấn đấu hết mình, cho dù may mắn có thể không đến với bạn nhưng chắc chắn bạn sẽ không phải hối tiếc về quãng thời gian đó.</p>
+    <div class="col-md-12">
+      <h2 class="text-center">NGUYEN VAN HIEN</h2><br/>
+      <p>Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.</p>
+    </div>
     <div class="row">
       <div class="col-sm-5">
         <img src="../assets/user-avatar.png" class="user-avatar">

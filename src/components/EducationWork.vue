@@ -1,5 +1,8 @@
 <template>
   <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-center">EDUCATION AND WORK</h3><br/>
+    </div>
     <table class="table table-vertical-align-middle">
       <tr v-for="(value) in educationWork">
         <th>

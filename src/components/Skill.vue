@@ -1,5 +1,10 @@
 <template>
-  <chartjs-radar :labels="getLabel()" :datasets="getSkillValue()" :bind="true"></chartjs-radar>
+  <div>
+    <div class="col-md-12">
+      <h3 class="text-center">SKILLS</h3><br/>
+    </div>
+    <chartjs-radar :labels="getLabel()" :datasets="getSkillValue()" :bind="true"></chartjs-radar>
+  </div>
 </template>
 
 <script>
