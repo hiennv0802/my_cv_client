@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <h3 class="text-center">EDUCATION AND WORK</h3><br/>
     </div>
-    <table class="table table-vertical-align-middle">
+    <table class="table table-vertical-align-middle col-md-10 offset-md-1">
       <tr v-for="(value) in educationWork">
         <th>
           <div class="edu-year">
@@ -14,7 +14,7 @@
         </th>
         <td>{{value.desc}}</td>
         <td>
-          <img :src="imageUrl()" class="certification_logo"/>
+          <img :src="imageUrl(value)" class="certification_logo"/>
         </td>
       </tr>
     </table>
@@ -26,8 +26,12 @@ export default {
   name: "EducationWork",
   props: ["educationWork"],
   methods: {
-    imageUrl: function() {
-      return require("../assets/framgia.jpg");
+    imageUrl: function(value) {
+      if (value.place == "Framgia Vietnam") {
+        return require("../assets/framgia.jpg");
+      } else if (value.position == "Student") {
+        return require("../assets/uet.jpg");
+      }
     }
   }
 }

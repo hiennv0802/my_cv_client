@@ -2,6 +2,7 @@
   <div id="app" class="container">
     <basic-info :basicInfo="basic"></basic-info>
     <education-work :educationWork="work"></education-work>
+    <project :projectInfo="projects"></project>
     <skill :skillInfo="skills"></skill>
     <knowledge :knowledgeInfo="knowledge"></knowledge>
     <other-skill :otherSkillInfo="otherSkill"></other-skill>
@@ -16,6 +17,7 @@ import Skill from "./components/Skill.vue"
 import Knowledge from "./components/Knowledge.vue"
 import OtherSkill from "./components/OtherSkill.vue"
 import Favorite from "./components/Favorite.vue"
+import Project from "./components/Project.vue"
 import axios from "axios";
 
 export default {
@@ -26,10 +28,11 @@ export default {
     Skill,
     Knowledge,
     OtherSkill,
-    Favorite
+    Favorite,
+    Project
   },
   props: ["basicInfo", "educationWork", "skillInfo", "knowledgeInfo",
-    "otherSkillInfo", "favoriteInfo"],
+    "otherSkillInfo", "favoriteInfo", "projectInfo"],
   data() {
     return {
       info: null,
@@ -38,7 +41,8 @@ export default {
       skills: {},
       knowledge: {},
       otherSkill: {},
-      favorite: {}
+      favorite: {},
+      projects: {}
     }
   },
   mounted() {
@@ -50,6 +54,7 @@ export default {
       this.knowledge = this.info["knowledge"];
       this.otherSkill = this.info["other_skills"];
       this.favorite = this.info["favorite"];
+      this.projects = this.info["projects"];
     })
   }
 }
